@@ -131,4 +131,4 @@ __pycache__/
 
 ```
 
-Pronto! Com esses três arquivos configurados dessa forma na sua pasta, você pode fazer o seu `git commit` e `git push` com segurança, e a página do seu repositório no GitHub vai renderizar tudo perfeitamente.
+
