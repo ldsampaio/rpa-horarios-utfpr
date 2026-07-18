@@ -1,9 +1,11 @@
+```markdown
 # 🤖 RPA - Horários dos Professores
 
-Este é um script de automação (RPA) desenvolvido em Python para gerenciar, extrair e consolidar dados de horários e frequências de professores diretamente no **Google Sheets**. O script processa os dados e gera automaticamente uma aba de "Resumo" na planilha, organizando a carga horária e a situação de cada professor.
+Este é um script de automação (RPA) desenvolvido em Python para gerenciar, extrair e consolidar dados de horários e frequências de professores diretamente no **Google Sheets**. O script realiza a navegação automatizada para coleta de dados, processa as informações e gera automaticamente uma aba de "Resumo" na planilha, organizando a carga horária e a situação de cada professor.
 
 ## 🚀 Funcionalidades
 
+- Navegação web automatizada utilizando o Playwright.
 - Conecta-se automaticamente ao Google Sheets via API.
 - Processa a lista de professores e suas respectivas cargas horárias.
 - Cria (ou atualiza) uma aba chamada **Resumo**, posicionando-a como a primeira aba da planilha.
@@ -39,33 +41,95 @@ Para que o script consiga ler e editar a sua planilha do Google, você precisa c
    git clone [https://github.com/ldsampaio/RPAfrequencias.git](https://github.com/ldsampaio/RPAfrequencias.git)
    cd RPAfrequencias
 
-(Opcional, mas recomendado) Crie um ambiente virtual:
+```
 
-Bash
+2. (Opcional, mas recomendado) Crie um ambiente virtual:
+```bash
 python -m venv venv
+
 # No Windows:
 venv\Scripts\activate
+
 # No Linux/Mac:
 source venv/bin/activate
-Instale as dependências necessárias:
 
-Bash
+```
+
+
+3. Instale as dependências necessárias contidas no `requirements.txt`:
+```bash
 pip install -r requirements.txt
-(Se você não tiver um arquivo requirements.txt, instale as bibliotecas manualmente digitando: pip install gspread google-auth)
 
-💻 Como executar
-Após ter configurado as credenciais e instalado as dependências, certifique-se de que o arquivo RPAhorariosProfessores.py aponta para o nome ou ID correto da sua planilha.
+```
+
+
+4. **Instale o navegador do Playwright (Essencial):**
+Como o projeto usa o Playwright para automação, você precisa baixar o navegador Chromium utilizado por ele:
+```bash
+playwright install chromium
+
+```
+
+
+
+## 💻 Como executar
+
+Após ter configurado as credenciais e instalado as dependências, certifique-se de que o arquivo `RPAhorariosProfessores.py` aponta para o nome ou ID correto da sua planilha.
 
 Para rodar a automação, execute no terminal:
 
-Bash
+```bash
 python RPAhorariosProfessores.py
-Você verá no terminal os logs de execução (ex: "Gerando aba de Resumo de Carga Horária...", "Aba 'Resumo' já existe. Limpando dados antigos...").
 
-📁 Estrutura do Projeto
+```
 
+Você verá no terminal os logs de execução (ex: *"Gerando aba de Resumo de Carga Horária..."*, *"Aba 'Resumo' já existe. Limpando dados antigos..."*).
+
+## 📁 Estrutura do Projeto
+
+```text
 RPAfrequencias/
 ├── RPAhorariosProfessores.py  # Script principal da automação
-├── credentials.json           # Chave de API do Google (NÃO COMITE ESTE ARQUIVO)
+├── credentials.json           # Chave de API do Google (⚠️ NÃO COMITE ESTE ARQUIVO)
 ├── requirements.txt           # Lista de dependências do Python
+├── .gitignore                 # Arquivo para ocultar credenciais do GitHub
 └── README.md                  # Este arquivo de documentação
+
+```
+
+## ⚠️ Avisos de Segurança (MUITO IMPORTANTE)
+
+**NUNCA** suba o seu arquivo `credentials.json` para o GitHub. Se fizer isso, o Google detectará o vazamento e bloqueará sua chave instantaneamente.
+
+Para evitar isso, certifique-se de que existe um arquivo chamado `.gitignore` na raiz do seu projeto.
+
+```
+
+---
+
+### 2. Arquivo `requirements.txt`
+Crie um arquivo chamado exatamente `requirements.txt` e cole isso dentro:
+
+```text
+playwright
+gspread
+google-auth
+
+```
+
+---
+
+### 3. Arquivo `.gitignore`
+
+Crie um arquivo chamado exatamente `.gitignore` (o ponto no começo é obrigatório) e cole isso dentro:
+
+```text
+credentials.json
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+```
+
+Pronto! Com esses três arquivos configurados dessa forma na sua pasta, você pode fazer o seu `git commit` e `git push` com segurança, e a página do seu repositório no GitHub vai renderizar tudo perfeitamente.
