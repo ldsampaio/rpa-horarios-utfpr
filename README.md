@@ -1,4 +1,4 @@
-```markdown
+
 # 🤖 RPA - Horários dos Professores
 
 Este é um script de automação (RPA) desenvolvido em Python para gerenciar, extrair e consolidar dados de horários e frequências de professores diretamente no **Google Sheets**. O script realiza a navegação automatizada para coleta de dados, processa as informações e gera automaticamente uma aba de "Resumo" na planilha, organizando a carga horária e a situação de cada professor.
@@ -41,7 +41,6 @@ Para que o script consiga ler e editar a sua planilha do Google, você precisa c
    git clone [https://github.com/ldsampaio/RPAfrequencias.git](https://github.com/ldsampaio/RPAfrequencias.git)
    cd RPAfrequencias
 
-```
 
 2. (Opcional, mas recomendado) Crie um ambiente virtual:
 ```bash
